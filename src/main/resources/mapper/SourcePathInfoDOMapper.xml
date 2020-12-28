@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.pactera.com.Jacocopactera.dao.objectDao.SourcePathInfoDOMapper">
+    <resultMap id="BaseResultMap" type="www.pactera.com.Jacocopactera.dao.objectDo.SourcePathInfoDO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="version_number" jdbcType="VARCHAR" property="versionNumber"/>
+        <result column="package_path" jdbcType="VARCHAR" property="packagePath"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime"/>
+        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
+    </resultMap>
+
+    <select id="selectProjectFile" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from source_path_info where project_name = #{projectName,jdbcType=VARCHAR}
+        and version_number = #{versionNumber,jdbcType=VARCHAR}
+        and operator = #{operator,jdbcType=VARCHAR};
+    </select>
+
+
+    <insert id="insert" parameterType="www.pactera.com.Jacocopactera.dao.objectDo.SourcePathInfoDO">
+        insert into source_path_info(id, `project_name`, `version_number`, `package_path`, `operator`, `operation_time`,`is_delete`) values(#{sourcePathInfoDO.id,jdbcType=INTEGER}, #{sourcePathInfoDO.projectName,jdbcType=VARCHAR}, #{sourcePathInfoDO.versionNumber,jdbcType=VARCHAR},
+        #{sourcePathInfoDO.packagePath,jdbcType=VARCHAR}, #{sourcePathInfoDO.operator,jdbcType=VARCHAR},#{sourcePathInfoDO.operationTime,jdbcType=TIMESTAMP}, #{sourcePathInfoDO.isDelete,jdbcType=VARCHAR});
+    </insert>
+
+
+
+</mapper>
