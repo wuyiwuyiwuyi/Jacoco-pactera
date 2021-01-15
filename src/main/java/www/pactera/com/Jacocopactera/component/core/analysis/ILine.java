@@ -12,37 +12,15 @@
  *******************************************************************************/
 package www.pactera.com.Jacocopactera.component.core.analysis;
 
-/**
- * The instruction and branch coverage of a single source line is described by
- * this interface.
- */
+
 public interface ILine {
 
-	/**
-	 * Returns the instruction counter for this line.
-	 *
-	 * @return instruction counter
-	 */
+
 	ICounter getInstructionCounter();
 
-	/**
-	 * Returns the branches counter for this line.
-	 *
-	 * @return branches counter
-	 */
+
 	ICounter getBranchCounter();
 
-	/**
-	 * Returns the coverage status of this line, calculated from the
-	 * instructions counter and branch counter.
-	 *
-	 * @see ICounter#EMPTY
-	 * @see ICounter#NOT_COVERED
-	 * @see ICounter#PARTLY_COVERED
-	 * @see ICounter#FULLY_COVERED
-	 *
-	 * @return status of this line
-	 */
 	int getStatus();
 
 }

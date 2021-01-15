@@ -21,9 +21,7 @@ import www.pactera.com.Jacocopactera.component.data.coverage.CoverageNodeImpl;
 
 import java.util.Collection;
 
-/**
- * Implementation of {@link IPackageCoverage}.
- */
+
 public class PackageCoverageImpl extends CoverageNodeImpl
 		implements IPackageCoverage {
 
@@ -31,16 +29,7 @@ public class PackageCoverageImpl extends CoverageNodeImpl
 
 	private final Collection<ISourceFileCoverage> sourceFiles;
 
-	/**
-	 * Creates package node instance for a package with the given name.
-	 *
-	 * @param name
-	 *            vm name of the package
-	 * @param classes
-	 *            collection of all classes in this package
-	 * @param sourceFiles
-	 *            collection of all source files in this package
-	 */
+
 	public PackageCoverageImpl(final String name,
                                final Collection<IClassCoverage> classes,
                                final Collection<ISourceFileCoverage> sourceFiles) {
@@ -57,8 +46,6 @@ public class PackageCoverageImpl extends CoverageNodeImpl
 			}
 		}
 	}
-
-	// === IPackageCoverage implementation ===
 
 	public Collection<IClassCoverage> getClasses() {
 		return classes;

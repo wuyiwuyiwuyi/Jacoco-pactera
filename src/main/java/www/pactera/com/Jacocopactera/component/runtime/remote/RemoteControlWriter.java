@@ -18,37 +18,20 @@ import www.pactera.com.Jacocopactera.component.runtime.IRemoteCommandVisitor;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * {@link ExecutionDataWriter} with commands added for runtime remote control.
- */
+
 public class RemoteControlWriter extends ExecutionDataWriter
 		implements IRemoteCommandVisitor {
 
-	/** Block identifier to confirm successful command execution. */
+
 	public static final byte BLOCK_CMDOK = 0x20;
 
-	/** Block identifier for dump command */
+
 	public static final byte BLOCK_CMDDUMP = 0x40;
 
-	/**
-	 * Creates a new writer based on the given output stream.
-	 *
-	 * @param output
-	 *            stream to write commands to
-	 * @throws IOException
-	 *             if the header can't be written
-	 */
 	public RemoteControlWriter(final OutputStream output) throws IOException {
 		super(output);
 	}
 
-	/**
-	 * Sends a confirmation that a commands has been successfully executed and
-	 * the response is completed.
-	 *
-	 * @throws IOException
-	 *             in case of problems with the remote connection
-	 */
 	public void sendCmdOk() throws IOException {
 		out.writeByte(RemoteControlWriter.BLOCK_CMDOK);
 	}

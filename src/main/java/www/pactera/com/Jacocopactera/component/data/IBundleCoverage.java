@@ -14,18 +14,9 @@ package www.pactera.com.Jacocopactera.component.data;
 
 import java.util.Collection;
 
-/**
- * Coverage data of a bundle. A bundle groups a collection of packages.
- *
- * @see IPackageCoverage
- */
+
 public interface IBundleCoverage extends ICoverageNode {
 
-	/**
-	 * Returns all packages contained in this bundle.
-	 *
-	 * @return all packages
-	 */
 	Collection<IPackageCoverage> getPackages();
 
 }

@@ -1,7 +1,6 @@
 package www.pactera.com.Jacocopactera.AccessControl;
 
 import com.alibaba.fastjson.JSON;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -83,7 +82,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         Enumeration<String> str  = request.getHeaderNames();
 
         String token  = JwtUtils.createToken(jwtUser.getUsername());
-
         response.setHeader("Authorization","Bearer "+token);
         response.setContentType(CONTENT_TYPE);
         response.setCharacterEncoding(CHARACTER_ENCODING);

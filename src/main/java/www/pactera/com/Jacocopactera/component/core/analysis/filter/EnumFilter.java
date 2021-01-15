@@ -18,10 +18,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters methods <code>values</code> and <code>valueOf</code> that compiler
- * creates for enums.
- */
 public final class EnumFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

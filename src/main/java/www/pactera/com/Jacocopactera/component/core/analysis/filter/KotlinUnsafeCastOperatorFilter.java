@@ -21,10 +21,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters branch in bytecode that Kotlin compiler generates for "unsafe" cast
- * operator.
- */
 public final class KotlinUnsafeCastOperatorFilter implements IFilter {
 
 	private static final String KOTLIN_TYPE_CAST_EXCEPTION = "kotlin/TypeCastException";

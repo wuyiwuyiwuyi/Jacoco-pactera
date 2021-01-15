@@ -23,20 +23,15 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFrame;
 import www.pactera.com.Jacocopactera.component.core.analysis.flow.LabelInfo;
 import www.pactera.com.Jacocopactera.component.core.analysis.flow.MethodProbesVisitor;
 
-/**
- * A {@link MethodProbesVisitor} that builds the {@link Instruction}s of a
- * method to calculate the detailed execution status.
- */
+
 public class MethodAnalyzer extends MethodProbesVisitor {
 
 	private final InstructionsBuilder builder;
 
-	/** Current node of the ASM tree API */
+
 	private AbstractInsnNode currentNode;
 
-	/**
-	 * New instance that uses the given builder.
-	 */
+
 	MethodAnalyzer(final InstructionsBuilder builder) {
 		this.builder = builder;
 	}

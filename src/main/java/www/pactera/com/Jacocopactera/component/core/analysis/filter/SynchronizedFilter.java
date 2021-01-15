@@ -20,9 +20,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters code that is generated for synchronized statement.
- */
 public final class SynchronizedFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

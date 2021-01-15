@@ -27,7 +27,6 @@
         select * from project_coverage_info
     </select>
 
-
     <insert id="insert" parameterType="www.pactera.com.Jacocopactera.dao.objectDo.CoverageInfoDO">
         insert into project_coverage_info(id, `project_name`, `version_number`, `phase`, `status`, `type`, `coverage_line`, total_line,
         `coverage_rate`, `operator`, `operation_time`,`is_delete`,`is_merge`) values(#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{versionNumber,jdbcType=VARCHAR},
@@ -51,6 +50,9 @@
         </if>
         <if test="null != endTime">
             and operation_time &lt;= #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="status != '' and null != status">
+            and status = #{status,jdbcType=VARCHAR}
         </if>
         order by operation_time desc
     </select>

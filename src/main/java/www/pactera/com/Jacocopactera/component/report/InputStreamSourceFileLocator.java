@@ -17,26 +17,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-/**
- * Abstract base class for {@link ISourceFileLocator} locator implementations
- * based on {@link InputStream}s. It handles the encoding and tab width.
- */
+
 public abstract class InputStreamSourceFileLocator
 		implements ISourceFileLocator {
 
 	private final String encoding;
 	private final int tabWidth;
 
-	/**
-	 * Creates a new locator with the given specification.
-	 *
-	 * @param encoding
-	 *            encoding of the source files, <code>null</code> for platform
-	 *            default encoding
-	 * @param tabWidth
-	 *            tab width in source files as number of blanks
-	 *
-	 */
 	protected InputStreamSourceFileLocator(final String encoding,
                                            final int tabWidth) {
 		this.encoding = encoding;

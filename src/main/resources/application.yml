@@ -1,11 +1,9 @@
 server:
   port: 8091
 
-
 create:
   coverage:
     filePath: C:\Users\v_yyyiwu\Desktop\pactera-tools
-
 
 spring:
   application:
@@ -31,8 +29,5 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
-
-logging:
-  config: classpath:logback-spring.xml
-  file:
-    path: C:\Users\v_yyyiwu\Desktop\logs
+#logging:
+  #config: classpath:logback-spring.xml

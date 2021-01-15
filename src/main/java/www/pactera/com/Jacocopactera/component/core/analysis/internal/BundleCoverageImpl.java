@@ -22,22 +22,13 @@ import www.pactera.com.Jacocopactera.component.data.coverage.CoverageNodeImpl;
 
 import java.util.*;
 
-/**
- * Implementation of {@link IBundleCoverage}.
- */
+
 public class BundleCoverageImpl extends CoverageNodeImpl
 		implements IBundleCoverage {
 
 	private final Collection<IPackageCoverage> packages;
 
-	/**
-	 * Creates a new instance of a bundle with the given name.
-	 *
-	 * @param name
-	 *            name of this bundle
-	 * @param packages
-	 *            collection of all packages contained in this bundle
-	 */
+
 	public BundleCoverageImpl(final String name,
                               final Collection<IPackageCoverage> packages) {
 		super(ElementType.BUNDLE, name);
@@ -45,17 +36,7 @@ public class BundleCoverageImpl extends CoverageNodeImpl
 		increment(packages);
 	}
 
-	/**
-	 * Creates a new instance of a bundle with the given name. The packages are
-	 * calculated from the given classes and source files.
-	 *
-	 * @param name
-	 *            name of this bundle
-	 * @param classes
-	 *            all classes in this bundle
-	 * @param sourcefiles
-	 *            all source files in this bundle
-	 */
+
 	public BundleCoverageImpl(final String name,
                               final Collection<IClassCoverage> classes,
                               final Collection<ISourceFileCoverage> sourcefiles) {

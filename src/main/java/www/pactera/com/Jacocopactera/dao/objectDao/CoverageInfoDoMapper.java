@@ -18,7 +18,8 @@ public interface CoverageInfoDoMapper {
                                                    @Param("versionNumber")String versionNumber,
                                                    @Param("operator")String operator,
                                                    @Param("startTime")Date startTime,
-                                                   @Param("endTime")Date endTime);
+                                                   @Param("endTime")Date endTime,
+                                                   @Param("status")String status);
 
     void update(@Param("coverageInfoDO") CoverageInfoDO coverageInfoDO);
 }

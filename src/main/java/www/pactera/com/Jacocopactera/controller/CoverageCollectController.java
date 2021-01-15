@@ -2,6 +2,7 @@ package www.pactera.com.Jacocopactera.controller;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-
+@Slf4j
 @Controller
 public class CoverageCollectController implements ICoverageCollectShare {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private ICoverageCollectService coverageCollectService;
@@ -29,42 +28,53 @@ public class CoverageCollectController implements ICoverageCollectShare {
     public ResponseData<CollectCoverageRespDTO> CoverageCollect(@Valid CollectCoverageReqDTO reqDTO) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String token = request.getHeader("Authorization");
-        logger.info("收集项目覆盖率开始：req={}",reqDTO);
+
+        //log.error("收集项目覆盖率开始：req={}",reqDTO);
         ResponseData<CollectCoverageRespDTO> resp = coverageCollectService.coverageCollect(reqDTO,token);
-        logger.info("收集项目覆盖率结束：resp={}",resp);
+        //log.error("收集项目覆盖率结束：resp={}",resp);
         return resp;
     }
 
     @Override
     public ResponseData<MergeCoverageRespDTO> CoverageMerge(@Valid MergeCoverageReqDTO reqDTO) {
+        //log.error("合并项目覆盖率请求开始：req={}",reqDTO);
         ResponseData<MergeCoverageRespDTO> resp = coverageCollectService.coverageMerge(reqDTO);
+        //log.error("合并项目覆盖率结果返回：resp={}",resp);
         return resp;
     }
 
     @Override
     public ResponseData<QueryCoverageRespDTO> queryCoverage(@Valid QueryCollectCoverageReqDTO reqDTO) {
+        //log.error("按条件查询整体项目覆盖率开始：req={}",reqDTO);
         ResponseData<QueryCoverageRespDTO> resp =  coverageCollectService.coverageQuery(reqDTO);
+        //log.error("按条件查询整体项目覆盖率结束：resp={}",resp);
         return resp;
     }
 
 
     @Override
     public ResponseData<ProjectCoverageRespDTO> queryProjectCoverage(@Valid ProjectCoverageReqDTO projectCoverageReqDTO) {
-
-        logger.info("查询项目覆盖率开始：req={}",projectCoverageReqDTO);
+        //log.error("查询项目覆盖率开始：req={}",projectCoverageReqDTO);
         ResponseData<ProjectCoverageRespDTO> resp = coverageCollectService.queryProjectCoverage(projectCoverageReqDTO);
-        logger.info("查询项目覆盖率结束：resp={}",resp);
+        //log.error("查询项目覆盖率结束：resp={}",resp);
         return resp;
     }
 
     @Override
     public ResponseData<SourceCoverageRespDTO> querySourceCoverage(@Valid SourceCoverageReqDTO sourceCoverageReqDTO) {
+        //log.debug("查询具体的文件覆盖详情请求开始：req={}",sourceCoverageReqDTO);
         ResponseData<SourceCoverageRespDTO> resp = coverageCollectService.querySourceCoverage(sourceCoverageReqDTO);
+        //log.debug("查询具体的文件覆盖详情请求结束：resp={}",resp);
         return resp;
     }
 
     @Override
-    public void gainSourceFile(HttpServletResponse response, @Valid SourceCoverageReqDTO reqDTO) {
-        coverageCollectService.gainSourceFile(response,reqDTO);
+    public ResponseData<SourcesGainDTO> gainSourceFile(@Valid SourceCoverageReqDTO reqDTO) {
+
+        ResponseData<SourcesGainDTO> resp = coverageCollectService.gainSourceFile(reqDTO);
+
+        return resp;
     }
+
+
 }

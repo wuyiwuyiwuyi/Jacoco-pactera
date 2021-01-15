@@ -19,41 +19,32 @@ import www.pactera.com.Jacocopactera.component.data.ICoverageNode;
 
 import java.util.Collection;
 
-/**
- * Base implementation for coverage data nodes.
- */
+
 public class CoverageNodeImpl implements ICoverageNode {
 
 	private final ElementType elementType;
 
 	private final String name;
 
-	/** Counter for branches. */
+
 	protected CounterImpl branchCounter;
 
-	/** Counter for instructions. */
+
 	protected CounterImpl instructionCounter;
 
-	/** Counter for lines */
+
 	protected CounterImpl lineCounter;
 
-	/** Counter for complexity. */
+
 	protected CounterImpl complexityCounter;
 
-	/** Counter for methods. */
+
 	protected CounterImpl methodCounter;
 
-	/** Counter for classes. */
+
 	protected CounterImpl classCounter;
 
-	/**
-	 * Creates a new coverage data node.
-	 *
-	 * @param elementType
-	 *            type of the element represented by this instance
-	 * @param name
-	 *            name of this node
-	 */
+
 	public CoverageNodeImpl(final ElementType elementType, final String name) {
 		this.elementType = elementType;
 		this.name = name;
@@ -65,12 +56,6 @@ public class CoverageNodeImpl implements ICoverageNode {
 		this.lineCounter = CounterImpl.COUNTER_0_0;
 	}
 
-	/**
-	 * Increments the counters by the values given by another element.
-	 *
-	 * @param child
-	 *            counters to add
-	 */
 	public void increment(final ICoverageNode child) {
 		instructionCounter = instructionCounter
 				.increment(child.getInstructionCounter());
@@ -82,13 +67,6 @@ public class CoverageNodeImpl implements ICoverageNode {
 		classCounter = classCounter.increment(child.getClassCounter());
 	}
 
-	/**
-	 * Increments the counters by the values given by the collection of
-	 * elements.
-	 *
-	 * @param children
-	 *            list of nodes, which counters will be added to this node
-	 */
 	public void increment(final Collection<? extends ICoverageNode> children) {
 		for (final ICoverageNode child : children) {
 			increment(child);

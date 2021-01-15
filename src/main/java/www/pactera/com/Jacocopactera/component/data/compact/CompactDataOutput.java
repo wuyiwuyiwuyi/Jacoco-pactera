@@ -16,34 +16,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * Additional data output methods for compact storage of data structures.
- *
- * @see
- */
+
 public class CompactDataOutput extends DataOutputStream {
 
-	/**
-	 * Creates a new {@link CompactDataOutput} instance that writes data to the
-	 * specified underlying output stream
-	 *
-	 * @param out
-	 *            underlying output stream
-	 */
+
 	public CompactDataOutput(final OutputStream out) {
 		super(out);
 	}
 
-	/**
-	 * Writes a variable length representation of an integer value that reduces
-	 * the number of written bytes for small positive values. Depending on the
-	 * given value 1 to 5 bytes will be written to the underlying stream.
-	 *
-	 * @param value
-	 *            value to write
-	 * @throws IOException
-	 *             if thrown by the underlying stream
-	 */
 	public void writeVarInt(final int value) throws IOException {
 		if ((value & 0xFFFFFF80) == 0) {
 			writeByte(value);
@@ -53,15 +33,6 @@ public class CompactDataOutput extends DataOutputStream {
 		}
 	}
 
-	/**
-	 * Writes a boolean array. Internally a sequence of boolean values is packed
-	 * into single bits.
-	 *
-	 * @param value
-	 *            boolean array
-	 * @throws IOException
-	 *             if thrown by the underlying stream
-	 */
 	public void writeBooleanArray(final boolean[] value) throws IOException {
 		writeVarInt(value.length);
 		int buffer = 0;

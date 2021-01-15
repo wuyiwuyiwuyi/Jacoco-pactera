@@ -17,12 +17,15 @@
         and operator = #{operator,jdbcType=VARCHAR};
     </select>
 
+    <select id="selectPackageName" parameterType="java.lang.String" resultType="java.lang.String">
+        select package_path from source_path_info where project_name = #{projectName,jdbcType=VARCHAR}
+        and version_number = #{versionNumber,jdbcType=VARCHAR}
+        and operator = #{operator,jdbcType=VARCHAR} and package_path LIKE CONCAT('%',#{sourceName},'%') ;
+    </select>
 
     <insert id="insert" parameterType="www.pactera.com.Jacocopactera.dao.objectDo.SourcePathInfoDO">
         insert into source_path_info(id, `project_name`, `version_number`, `package_path`, `operator`, `operation_time`,`is_delete`) values(#{sourcePathInfoDO.id,jdbcType=INTEGER}, #{sourcePathInfoDO.projectName,jdbcType=VARCHAR}, #{sourcePathInfoDO.versionNumber,jdbcType=VARCHAR},
         #{sourcePathInfoDO.packagePath,jdbcType=VARCHAR}, #{sourcePathInfoDO.operator,jdbcType=VARCHAR},#{sourcePathInfoDO.operationTime,jdbcType=TIMESTAMP}, #{sourcePathInfoDO.isDelete,jdbcType=VARCHAR});
     </insert>
-
-
 
 </mapper>

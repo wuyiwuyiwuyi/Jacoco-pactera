@@ -16,7 +16,8 @@ public enum SystemMessageEnum {
     PARAMETER_LACK("00011","收集覆盖率缺少必要参数"),
     PARAMETER_LACK_QUERY_COVERAGE("00012","查询覆盖率缺少必要参数"),
     ANALYSIS_FILE_EXCEPTION("00013","文件解析时异常"),
-    SOURCES_FILE_NOT_FIND("00014","项目源文件未发现");
+    SOURCES_FILE_NOT_FIND("00014","项目源文件未发现"),
+    PORT_RELEVANCE_NOT_FIND("00015","未项目暂不持支覆盖率收集");
 
 
     private String code;

@@ -19,10 +19,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters methods that Kotlin compiler generates for non-overridden
- * non-abstract methods of interfaces.
- */
 final class KotlinDefaultMethodsFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

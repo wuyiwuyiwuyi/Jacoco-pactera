@@ -35,14 +35,6 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-/**
- * An {@link Analyzer} instance processes a set of Java class files and
- * calculates coverage data for them. For each class file the result is reported
- * to a given {@link ICoverageVisitor} instance. In addition the
- * {@link Analyzer} requires a {@link ExecutionDataStore} instance that holds
- * the execution data for the classes to analyze. The {@link Analyzer} offers
- * several methods to analyze classes from a variety of sources.
- */
 public class Analyzer {
 
 	private final ExecutionDataStore executionData;
@@ -51,15 +43,7 @@ public class Analyzer {
 
 	private final StringPool stringPool;
 
-	/**
-	 * Creates a new analyzer reporting to the given output.
-	 *
-	 * @param executionData
-	 *            execution data
-	 * @param coverageVisitor
-	 *            the output instance that will coverage data for every analyzed
-	 *            class
-	 */
+
 	public Analyzer(final ExecutionDataStore executionData,
                     final ICoverageVisitor coverageVisitor) {
 		this.executionData = executionData;
@@ -67,15 +51,7 @@ public class Analyzer {
 		this.stringPool = new StringPool();
 	}
 
-	/**
-	 * Creates an ASM class visitor for analysis.
-	 *
-	 * @param classid
-	 *            id of the class calculated with {@link CRC64}
-	 * @param className
-	 *            VM name of the class
-	 * @return ASM visitor to write class definition to
-	 */
+
 	private ClassVisitor createAnalyzingVisitor(final long classid,
 			final String className) {
 		final ExecutionData data = executionData.get(classid);
@@ -115,16 +91,6 @@ public class Analyzer {
 		reader.accept(visitor, 0);
 	}
 
-	/**
-	 * Analyzes the class definition from a given in-memory buffer.
-	 *
-	 * @param buffer
-	 *            class definitions
-	 * @param location
-	 *            a location description used for exception messages
-	 * @throws IOException
-	 *             if the class can't be analyzed
-	 */
 	public void analyzeClass(final byte[] buffer, final String location)
 			throws IOException {
 		try {
@@ -134,17 +100,7 @@ public class Analyzer {
 		}
 	}
 
-	/**
-	 * Analyzes the class definition from a given input stream. The provided
-	 * {@link InputStream} is not closed by this method.
-	 *
-	 * @param input
-	 *            stream to read class definition from
-	 * @param location
-	 *            a location description used for exception messages
-	 * @throws IOException
-	 *             if the stream can't be read or the class can't be analyzed
-	 */
+
 	public void analyzeClass(final InputStream input, final String location)
 			throws IOException {
 		final byte[] buffer;
@@ -164,21 +120,7 @@ public class Analyzer {
 		return ex;
 	}
 
-	/**
-	 * Analyzes all classes found in the given input stream. The input stream
-	 * may either represent a single class file, a ZIP archive, a Pack200
-	 * archive or a gzip stream that is searched recursively for class files.
-	 * All other content types are ignored. The provided {@link InputStream} is
-	 * not closed by this method.
-	 *
-	 * @param input
-	 *            input data
-	 * @param location
-	 *            a location description used for exception messages
-	 * @return number of class files found
-	 * @throws IOException
-	 *             if the stream can't be read or a class can't be analyzed
-	 */
+
 	public int analyzeAll(final InputStream input, final String location)
 			throws IOException {
 		final ContentTypeDetector detector;
@@ -202,17 +144,7 @@ public class Analyzer {
 		}
 	}
 
-	/**
-	 * Analyzes all class files contained in the given file or folder. Class
-	 * files as well as ZIP files are considered. Folders are searched
-	 * recursively.
-	 *
-	 * @param file
-	 *            file or folder to look for class files
-	 * @return number of class files found
-	 * @throws IOException
-	 *             if the file can't be read or a class can't be analyzed
-	 */
+
 	public int analyzeAll(final File file) throws IOException {
 		int count = 0;
 		if (file.isDirectory()) {
@@ -230,20 +162,7 @@ public class Analyzer {
 		return count;
 	}
 
-	/**
-	 * Analyzes all classes from the given class path. Directories containing
-	 * class files as well as archive files are considered.
-	 *
-	 * @param path
-	 *            path definition
-	 * @param basedir
-	 *            optional base directory, if <code>null</code> the current
-	 *            working directory is used as the base for relative path
-	 *            entries
-	 * @return number of class files found
-	 * @throws IOException
-	 *             if a file can't be read or a class can't be analyzed
-	 */
+
 	public int analyzeAll(final String path, final File basedir)
 			throws IOException {
 		int count = 0;

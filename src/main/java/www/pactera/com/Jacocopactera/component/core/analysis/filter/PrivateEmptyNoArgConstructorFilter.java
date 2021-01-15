@@ -18,9 +18,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters private empty constructors that do not have arguments.
- */
 public final class PrivateEmptyNoArgConstructorFilter implements IFilter {
 
 	private static final String CONSTRUCTOR_NAME = "<init>";

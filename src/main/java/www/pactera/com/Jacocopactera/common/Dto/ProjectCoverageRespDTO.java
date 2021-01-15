@@ -1,5 +1,6 @@
 package www.pactera.com.Jacocopactera.common.Dto;
 
+import com.google.gson.JsonArray;
 import lombok.*;
 import www.pactera.com.Jacocopactera.common.BaseEntity.BaseDTO;
 import www.pactera.com.Jacocopactera.common.BaseEntity.Data;
@@ -33,7 +34,7 @@ public class ProjectCoverageRespDTO extends BaseDTO {
 
     private String operationTime;
 
-    private Data data;
+    private String data;
 
 
 

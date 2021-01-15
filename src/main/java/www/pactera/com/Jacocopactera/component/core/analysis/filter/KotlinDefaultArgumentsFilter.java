@@ -22,27 +22,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Filters branches that Kotlin compiler generates for default arguments.
- *
- * For each default argument Kotlin compiler generates following bytecode to
- * determine if it should be used or not:
- *
- * <pre>
- * ILOAD maskVar
- * ICONST_x, BIPUSH, SIPUSH, LDC or LDC_W
- * IAND
- * IFEQ label
- * default argument
- * label:
- * </pre>
- *
- * Where <code>maskVar</code> is penultimate argument of synthetic method with
- * suffix "$default" or of synthetic constructor with last argument
- * "kotlin.jvm.internal.DefaultConstructorMarker". And its value can't be zero -
- * invocation with all arguments uses original non synthetic method, thus
- * <code>IFEQ</code> instructions should be ignored.
- */
 public final class KotlinDefaultArgumentsFilter implements IFilter {
 
 	static boolean isDefaultArgumentsMethod(final MethodNode methodNode) {

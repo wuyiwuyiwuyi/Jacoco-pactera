@@ -12,16 +12,10 @@
  *******************************************************************************/
 package www.pactera.com.Jacocopactera.component.core.analysis;
 
-/**
- * Internal interface to create probe ids unique within a class.
- */
+
 public interface IProbeIdGenerator {
 
-	/**
-	 * Returns the next unique probe id.
-	 *
-	 * @return unique probe id
-	 */
+
 	int nextId();
 
 }

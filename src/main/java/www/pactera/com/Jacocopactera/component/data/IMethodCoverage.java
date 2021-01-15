@@ -12,24 +12,12 @@
  *******************************************************************************/
 package www.pactera.com.Jacocopactera.component.data;
 
-/**
- * Coverage data of a single method. The name of this node is the local method
- * name.
- */
+
 public interface IMethodCoverage extends ISourceNode {
 
-	/**
-	 * Returns the descriptor of the method.
-	 *
-	 * @return descriptor
-	 */
+
 	String getDesc();
 
-	/**
-	 * Returns the generic signature of the method if defined.
-	 *
-	 * @return generic signature or <code>null</code>
-	 */
 	String getSignature();
 
 }

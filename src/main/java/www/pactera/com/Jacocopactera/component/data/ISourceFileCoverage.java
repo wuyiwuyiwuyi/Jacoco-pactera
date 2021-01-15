@@ -12,17 +12,8 @@
  *******************************************************************************/
 package www.pactera.com.Jacocopactera.component.data;
 
-/**
- * Coverage data of a single source file. The name of this node is the local
- * name of the source file.
- */
 public interface ISourceFileCoverage extends ISourceNode {
 
-	/**
-	 * Returns the VM name of the package the source file belongs to.
-	 *
-	 * @return package name
-	 */
 	String getPackageName();
 
 }

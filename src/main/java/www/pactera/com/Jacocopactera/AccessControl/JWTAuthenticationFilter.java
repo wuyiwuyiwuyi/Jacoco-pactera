@@ -6,11 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import www.pactera.com.Jacocopactera.webAdapter.IRequestAdapter;
-import www.pactera.com.Jacocopactera.webAdapter.RequestAdapter;
+
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

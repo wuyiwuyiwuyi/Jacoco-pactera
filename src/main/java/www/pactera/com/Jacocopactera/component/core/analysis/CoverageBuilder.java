@@ -24,71 +24,30 @@ import www.pactera.com.Jacocopactera.component.data.ISourceFileCoverage;
 
 import java.util.*;
 
-/**
- * Builder for hierarchical {@link ICoverageNode} structures from single
- * {@link IClassCoverage} nodes. The nodes are feed into the builder through its
- * {@link ICoverageVisitor} interface. Afterwards the aggregated data can be
- * obtained with {@link #getClasses()}, {@link #getSourceFiles()} or
- * {@link #getBundle(String)} in the following hierarchy:
- *
- * <pre>
- * {@link IBundleCoverage}
- * +-- {@link IPackageCoverage}*
- *     +-- {@link IClassCoverage}*
- *     +-- {@link ISourceFileCoverage}*
- * </pre>
- */
 public class CoverageBuilder implements ICoverageVisitor {
 
 	private final Map<String, IClassCoverage> classes;
 
 	private final Map<String, ISourceFileCoverage> sourcefiles;
 
-	/**
-	 * Create a new builder.
-	 *
-	 */
 	public CoverageBuilder() {
 		this.classes = new HashMap<String, IClassCoverage>();
 		this.sourcefiles = new HashMap<String, ISourceFileCoverage>();
 	}
 
-	/**
-	 * Returns all class nodes currently contained in this builder.
-	 *
-	 * @return all class nodes
-	 */
 	public Collection<IClassCoverage> getClasses() {
 		return Collections.unmodifiableCollection(classes.values());
 	}
 
-	/**
-	 * Returns all source file nodes currently contained in this builder.
-	 *
-	 * @return all source file nodes
-	 */
 	public Collection<ISourceFileCoverage> getSourceFiles() {
 		return Collections.unmodifiableCollection(sourcefiles.values());
 	}
 
-	/**
-	 * Creates a bundle from all nodes currently contained in this bundle.
-	 *
-	 * @param name
-	 *            Name of the bundle
-	 * @return bundle containing all classes and source files
-	 */
 	public IBundleCoverage getBundle(final String name) {
 		return new BundleCoverageImpl(name, classes.values(),
 				sourcefiles.values());
 	}
 
-	/**
-	 * Returns all classes for which execution data does not match.
-	 *
-	 * @see IClassCoverage#isNoMatch()
-	 * @return collection of classes with non-matching execution data
-	 */
 	public Collection<IClassCoverage> getNoMatchClasses() {
 		final Collection<IClassCoverage> result = new ArrayList<IClassCoverage>();
 		for (final IClassCoverage c : classes.values()) {

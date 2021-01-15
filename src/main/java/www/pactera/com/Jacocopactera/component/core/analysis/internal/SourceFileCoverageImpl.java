@@ -15,22 +15,13 @@ package www.pactera.com.Jacocopactera.component.core.analysis.internal;
 
 import www.pactera.com.Jacocopactera.component.data.ISourceFileCoverage;
 
-/**
- * Implementation of {@link ISourceFileCoverage}.
- */
+
 public class SourceFileCoverageImpl extends SourceNodeImpl
 		implements ISourceFileCoverage {
 
 	private final String packagename;
 
-	/**
-	 * Creates a source file data object with the given parameters.
-	 *
-	 * @param name
-	 *            name of the source file
-	 * @param packagename
-	 *            vm name of the package the source file belongs to
-	 */
+
 	public SourceFileCoverageImpl(final String name, final String packagename) {
 		super(ElementType.SOURCEFILE, name);
 		this.packagename = packagename;

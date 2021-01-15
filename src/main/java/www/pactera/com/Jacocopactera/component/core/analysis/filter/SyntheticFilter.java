@@ -18,9 +18,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters synthetic methods unless they represent bodies of lambda expressions.
- */
 public final class SyntheticFilter implements IFilter {
 
 	private static boolean isScalaClass(final IFilterContext context) {

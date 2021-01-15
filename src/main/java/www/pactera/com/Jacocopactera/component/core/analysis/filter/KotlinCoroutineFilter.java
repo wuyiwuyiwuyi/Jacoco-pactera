@@ -22,9 +22,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Filters branches that Kotlin compiler generates for coroutines.
- */
 public final class KotlinCoroutineFilter implements IFilter {
 
 	static boolean isLastArgumentContinuation(final MethodNode methodNode) {

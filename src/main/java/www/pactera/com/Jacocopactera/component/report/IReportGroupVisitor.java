@@ -17,51 +17,12 @@ import www.pactera.com.Jacocopactera.component.data.IBundleCoverage;
 
 import java.io.IOException;
 
-/**
- * Output-Interface for hierarchical report structures. To allow sequential
- * processing and save memory the group structure has to be traversed in a "deep
- * first" fashion. The interface is implemented by the report formatters and can
- * be used to emit coverage report structures.
- *
- * The following constraints apply in using {@link IReportGroupVisitor}
- * instances:
- *
- * <ul>
- * <li>A visitor instance can be used to either submit bundles (
- * {@link #visitBundle(IBundleCoverage, ISourceFileLocator)}) or groups
- * {@link #visitGroup(String)}). Bundles and groups are not allowed for the same
- * visitor.</li>
- * <li>When creating nested groups with {@link #visitGroup(String)} the
- * hierarchy has to be processed in a "deep first" manner.</li>
- * </ul>
- */
 public interface IReportGroupVisitor {
 
-	/**
-	 * Called to add a bundle to the the report.
-	 *
-	 * @param bundle
-	 *            a bundle to include in the report
-	 * @param locator
-	 *            source locator for this bundle
-	 * @throws IOException
-	 *             in case of IO problems with the report writer
-	 */
+
 	void visitBundle(IBundleCoverage bundle, ISourceFileLocator locator)
 			throws IOException;
 
-	/**
-	 * Called to add a new group to the report. The returned
-	 * {@link IReportGroupVisitor} instance can be used to add nested bundles or
-	 * groups. The content of the group has to be completed before this or any
-	 * parent visitor can be used again ("deep first").
-	 *
-	 * @param name
-	 *            name of the group
-	 * @return visitor for the group's content
-	 * @throws IOException
-	 *             in case of IO problems with the report writer
-	 */
 	IReportGroupVisitor visitGroup(String name) throws IOException;
 
 }

@@ -30,23 +30,13 @@ public class ExecFileLoader {
 	private final SessionInfoStore sessionInfos;
 	private final ExecutionDataStore executionData;
 
-	/**
-	 * New instance to combine session infos and execution data from multiple
-	 * files.
-	 */
+
 	public ExecFileLoader() {
 		sessionInfos = new SessionInfoStore();
 		executionData = new ExecutionDataStore();
 	}
 
-	/**
-	 * Reads all data from given input stream.
-	 *
-	 * @param stream
-	 *            Stream to read data from
-	 * @throws IOException
-	 *             in case of problems while reading from the stream
-	 */
+
 	public void load(final InputStream stream) throws IOException {
 		final ExecutionDataReader reader = new ExecutionDataReader(
 				new BufferedInputStream(stream));
@@ -55,14 +45,7 @@ public class ExecFileLoader {
 		reader.read();
 	}
 
-	/**
-	 * Reads all data from given input stream.
-	 *
-	 * @param file
-	 *            file to read data from
-	 * @throws IOException
-	 *             in case of problems while reading from the stream
-	 */
+
 	public void load(final File file) throws IOException {
 		final InputStream stream = new FileInputStream(file);
 		try {
@@ -72,33 +55,14 @@ public class ExecFileLoader {
 		}
 	}
 
-	/**
-	 * Saves the current content into the given output stream.
-	 *
-	 * @param stream
-	 *            stream to save content to
-	 * @throws IOException
-	 *             in case of problems while writing to the stream
-	 */
+
 	public void save(final OutputStream stream) throws IOException {
 		final ExecutionDataWriter dataWriter = new ExecutionDataWriter(stream);
 		sessionInfos.accept(dataWriter);
 		executionData.accept(dataWriter);
 	}
 
-	/**
-	 * Saves the current content into the given file. Parent directories are
-	 * created as needed. Also a files system lock is acquired to avoid
-	 * concurrent write access.
-	 *
-	 * @param file
-	 *            file to save content to
-	 * @param append
-	 *            <code>true</code> if the content should be appended, otherwise
-	 *            the file is overwritten.
-	 * @throws IOException
-	 *             in case of problems while writing to the stream
-	 */
+
 	public void save(final File file, final boolean append) throws IOException {
 		final File folder = file.getParentFile();
 		if (folder != null) {
@@ -116,20 +80,12 @@ public class ExecFileLoader {
 		}
 	}
 
-	/**
-	 * Returns the session info store with all loaded sessions.
-	 *
-	 * @return session info store
-	 */
+
 	public SessionInfoStore getSessionInfoStore() {
 		return sessionInfos;
 	}
 
-	/**
-	 * Returns the execution data store with data for all loaded classes.
-	 *
-	 * @return execution data store
-	 */
+
 	public ExecutionDataStore getExecutionDataStore() {
 		return executionData;
 	}

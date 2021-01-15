@@ -16,9 +16,7 @@ package www.pactera.com.Jacocopactera.component.core.analysis.internal;
 import www.pactera.com.Jacocopactera.component.core.analysis.ICounter;
 import www.pactera.com.Jacocopactera.component.data.IMethodCoverage;
 
-/**
- * Implementation of {@link IMethodCoverage}.
- */
+
 public class MethodCoverageImpl extends SourceNodeImpl
 		implements IMethodCoverage {
 
@@ -26,16 +24,6 @@ public class MethodCoverageImpl extends SourceNodeImpl
 
 	private final String signature;
 
-	/**
-	 * Creates a method coverage data object with the given parameters.
-	 *
-	 * @param name
-	 *            name of the method
-	 * @param desc
-	 *            method descriptor
-	 * @param signature
-	 *            generic signature or <code>null</code>
-	 */
 	public MethodCoverageImpl(final String name, final String desc,
                               final String signature) {
 		super(ElementType.METHOD, name);
@@ -55,10 +43,6 @@ public class MethodCoverageImpl extends SourceNodeImpl
 		}
 	}
 
-	/**
-	 * This method must be called exactly once after all instructions and
-	 * branches have been incremented for this method coverage node.
-	 */
 	public void incrementMethodCounter() {
 		final ICounter base = this.instructionCounter.getCoveredCount() == 0
 				? CounterImpl.COUNTER_1_0

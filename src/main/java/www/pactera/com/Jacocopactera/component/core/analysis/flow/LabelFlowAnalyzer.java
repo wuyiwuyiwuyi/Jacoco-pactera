@@ -20,19 +20,10 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.MethodNode;
 import www.pactera.com.Jacocopactera.component.core.analysis.instr.InstrSupport;
 
-/**
- * Method visitor to collect flow related information about the {@link Label}s
- * within a class. It calculates the properties "multitarget" and "successor"
- * that can afterwards be obtained via {@link LabelInfo}.
- */
+
 public final class LabelFlowAnalyzer extends MethodVisitor {
 
-	/**
-	 * Marks all labels of the method with control flow information.
-	 *
-	 * @param method
-	 *            Method to mark labels
-	 */
+
 	public static void markLabels(final MethodNode method) {
 		// We do not use the accept() method as ASM resets labels after every
 		// call to accept()
@@ -43,26 +34,16 @@ public final class LabelFlowAnalyzer extends MethodVisitor {
 		method.instructions.accept(lfa);
 	}
 
-	/**
-	 * <code>true</code> if the current instruction is a potential successor of
-	 * the previous instruction. Accessible for testing.
-	 */
+
 	boolean successor = false;
 
-	/**
-	 * <code>true</code> for the very first instruction only. Accessible for
-	 * testing.
-	 */
+
 	boolean first = true;
 
-	/**
-	 * Label instance of the last line start.
-	 */
+
 	Label lineStart = null;
 
-	/**
-	 * Create new instance.
-	 */
+
 	public LabelFlowAnalyzer() {
 		super(InstrSupport.ASM_API_VERSION);
 	}

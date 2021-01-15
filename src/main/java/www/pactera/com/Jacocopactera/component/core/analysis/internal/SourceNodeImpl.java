@@ -18,40 +18,22 @@ import www.pactera.com.Jacocopactera.component.core.analysis.ILine;
 import www.pactera.com.Jacocopactera.component.data.ISourceNode;
 import www.pactera.com.Jacocopactera.component.data.coverage.CoverageNodeImpl;
 
-/**
- * Implementation of {@link ISourceNode}.
- */
+
 public class SourceNodeImpl extends CoverageNodeImpl implements ISourceNode {
 
 	private LineImpl[] lines;
 
-	/** first line number in {@link #lines} */
+
 	private int offset;
 
-	/**
-	 * Create a new source node implementation instance.
-	 *
-	 * @param elementType
-	 *            element type
-	 * @param name
-	 *            name of the element
-	 */
+
 	public SourceNodeImpl(final ElementType elementType, final String name) {
 		super(elementType, name);
 		lines = null;
 		offset = UNKNOWN_LINE;
 	}
 
-	/**
-	 * Make sure that the internal buffer can keep lines from first to last.
-	 * While the buffer is also incremented automatically, this method allows
-	 * optimization in case the total range is known in advance.
-	 *
-	 * @param first
-	 *            first line number or {@link ISourceNode#UNKNOWN_LINE}
-	 * @param last
-	 *            last line number or {@link ISourceNode#UNKNOWN_LINE}
-	 */
+
 	public void ensureCapacity(final int first, final int last) {
 		if (first == UNKNOWN_LINE || last == UNKNOWN_LINE) {
 			return;
@@ -73,14 +55,7 @@ public class SourceNodeImpl extends CoverageNodeImpl implements ISourceNode {
 		}
 	}
 
-	/**
-	 * Increments all counters by the values of the given child. When
-	 * incrementing the line counter it is assumed that the child refers to the
-	 * same source file.
-	 *
-	 * @param child
-	 *            child node to add
-	 */
+
 	public void increment(final ISourceNode child) {
 		instructionCounter = instructionCounter
 				.increment(child.getInstructionCounter());
@@ -101,18 +76,7 @@ public class SourceNodeImpl extends CoverageNodeImpl implements ISourceNode {
 		}
 	}
 
-	/**
-	 * Increments instructions and branches by the given counter values. If a
-	 * optional line number is specified the instructions and branches are added
-	 * to the given line. The line counter is incremented accordingly.
-	 *
-	 * @param instructions
-	 *            instructions to add
-	 * @param branches
-	 *            branches to add
-	 * @param line
-	 *            optional line number or {@link ISourceNode#UNKNOWN_LINE}
-	 */
+
 	public void increment(final ICounter instructions, final ICounter branches,
 			final int line) {
 		if (line != UNKNOWN_LINE) {

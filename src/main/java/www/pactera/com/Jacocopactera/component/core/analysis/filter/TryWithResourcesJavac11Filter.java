@@ -21,10 +21,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters code which is generated for try-with-resources statement by javac
- * starting from version 11.
- */
 public final class TryWithResourcesJavac11Filter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

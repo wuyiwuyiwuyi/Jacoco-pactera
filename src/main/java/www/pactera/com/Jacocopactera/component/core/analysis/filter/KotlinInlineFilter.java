@@ -26,9 +26,6 @@ import java.util.BitSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Filters out instructions that were inlined by Kotlin compiler.
- */
 public final class KotlinInlineFilter implements IFilter {
 
 	private int firstGeneratedLineNumber = -1;

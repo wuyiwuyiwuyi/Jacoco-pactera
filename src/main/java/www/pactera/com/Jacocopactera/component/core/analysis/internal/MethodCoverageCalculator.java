@@ -20,28 +20,13 @@ import www.pactera.com.Jacocopactera.component.data.ISourceNode;
 import java.util.*;
 import java.util.Map.Entry;
 
-/**
- * Calculates the filtered coverage of a single method. A instance of this class
- * can be first used as {@link IFilterOutput} before the coverage result is
- * calculated.
- */
+
 class MethodCoverageCalculator implements IFilterOutput {
 
 	private final Map<AbstractInsnNode, Instruction> instructions;
 
 	private final Set<AbstractInsnNode> ignored;
 
-	/**
-	 * Instructions that should be merged form disjoint sets. Coverage
-	 * information from instructions of one set will be merged into
-	 * representative instruction of set.
-	 *
-	 * Each such set is represented as a singly linked list: each element except
-	 * one references another element from the same set, element without
-	 * reference - is a representative of this set.
-	 *
-	 * This map stores reference (value) for elements of sets (key).
-	 */
 	private final Map<AbstractInsnNode, AbstractInsnNode> merged;
 
 	private final Map<AbstractInsnNode, Set<AbstractInsnNode>> replacements;
@@ -54,13 +39,6 @@ class MethodCoverageCalculator implements IFilterOutput {
 		this.replacements = new HashMap<AbstractInsnNode, Set<AbstractInsnNode>>();
 	}
 
-	/**
-	 * Applies all specified filtering commands and calculates the resulting
-	 * coverage.
-	 *
-	 * @param coverage
-	 *            the result is added to this coverage node
-	 */
 	void calculate(final MethodCoverageImpl coverage) {
 		applyMerges();
 		applyReplacements();

@@ -62,9 +62,10 @@ public interface ICoverageCollectShare {
 
     /**
      *
-     * @param response
+     * @param
      * @param reqDTO
      */
     @RequestMapping("/coverage/4yic6w/ainSource")
-    void gainSourceFile(HttpServletResponse response,@RequestBody @Valid SourceCoverageReqDTO reqDTO);
+    @ResponseBody
+    ResponseData<SourcesGainDTO> gainSourceFile(@RequestBody @Valid SourceCoverageReqDTO reqDTO);
 }

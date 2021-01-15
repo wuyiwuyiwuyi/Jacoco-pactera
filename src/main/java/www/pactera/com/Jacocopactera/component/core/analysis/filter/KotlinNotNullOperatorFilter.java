@@ -19,10 +19,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters branch in bytecode that Kotlin compiler generates for not-null
- * assertion operator.
- */
 public final class KotlinNotNullOperatorFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

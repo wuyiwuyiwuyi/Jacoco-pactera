@@ -21,21 +21,11 @@ import www.pactera.com.Jacocopactera.component.runtime.remote.RemoteControlWrite
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * {@link } with commands added for runtime remote control.
- */
+
 public class RemoteControlReader extends ExecutionDataReader {
 
 	private IRemoteCommandVisitor remoteCommandVisitor;
 
-	/**
-	 * Create a new read based on the given input stream.
-	 *
-	 * @param input
-	 *            input stream to read commands from
-	 * @throws IOException
-	 *             if the stream does not have a valid header
-	 */
 	public RemoteControlReader(final InputStream input) throws IOException {
 		super(input);
 	}
@@ -53,12 +43,6 @@ public class RemoteControlReader extends ExecutionDataReader {
 		}
 	}
 
-	/**
-	 * Sets an listener for agent commands.
-	 *
-	 * @param visitor
-	 *            visitor to retrieve agent commands
-	 */
 	public void setRemoteCommandVisitor(final IRemoteCommandVisitor visitor) {
 		this.remoteCommandVisitor = visitor;
 	}

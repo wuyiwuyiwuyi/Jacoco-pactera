@@ -16,15 +16,11 @@ package www.pactera.com.Jacocopactera.component.core.analysis.internal;
 import www.pactera.com.Jacocopactera.component.core.analysis.ICounter;
 import www.pactera.com.Jacocopactera.component.core.analysis.ILine;
 
-/**
- * Implementation of {@link ILine}.
- */
+
 public abstract class LineImpl implements ILine {
 
-	/** Max instruction counter value for which singletons are created */
 	private static final int SINGLETON_INS_LIMIT = 8;
 
-	/** Max branch counter value for which singletons are created */
 	private static final int SINGLETON_BRA_LIMIT = 4;
 
 	private static final LineImpl[][][][] SINGLETONS = new LineImpl[SINGLETON_INS_LIMIT
@@ -45,9 +41,6 @@ public abstract class LineImpl implements ILine {
 		}
 	}
 
-	/**
-	 * Empty line without instructions or branches.
-	 */
 	public static final LineImpl EMPTY = SINGLETONS[0][0][0][0];
 
 	private static LineImpl getInstance(final CounterImpl instructions,
@@ -63,9 +56,6 @@ public abstract class LineImpl implements ILine {
 		return new Var(instructions, branches);
 	}
 
-	/**
-	 * Mutable version.
-	 */
 	private static final class Var extends LineImpl {
 		Var(final CounterImpl instructions, final CounterImpl branches) {
 			super(instructions, branches);
@@ -80,9 +70,7 @@ public abstract class LineImpl implements ILine {
 		}
 	}
 
-	/**
-	 * Immutable version.
-	 */
+
 	private static final class Fix extends LineImpl {
 		public Fix(final int im, final int ic, final int bm, final int bc) {
 			super(CounterImpl.getInstance(im, ic),
@@ -97,10 +85,10 @@ public abstract class LineImpl implements ILine {
 		}
 	}
 
-	/** instruction counter */
+
 	protected CounterImpl instructions;
 
-	/** branch counter */
+
 	protected CounterImpl branches;
 
 	private LineImpl(final CounterImpl instructions,
@@ -109,15 +97,7 @@ public abstract class LineImpl implements ILine {
 		this.branches = branches;
 	}
 
-	/**
-	 * Adds the given counters to this line.
-	 *
-	 * @param instructions
-	 *            instructions to add
-	 * @param branches
-	 *            branches to add
-	 * @return instance with new counter values
-	 */
+
 	public abstract LineImpl increment(final ICounter instructions,
 			final ICounter branches);
 

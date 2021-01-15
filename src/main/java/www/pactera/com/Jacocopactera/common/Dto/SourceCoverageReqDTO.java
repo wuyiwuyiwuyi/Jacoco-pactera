@@ -24,10 +24,6 @@ public class SourceCoverageReqDTO extends BaseDTO {
      */
     private String operator;
     /**
-     * java文件所在的包名
-     */
-    private String packageName;
-    /**
      * java源文件名称
      */
     private String sourceName;

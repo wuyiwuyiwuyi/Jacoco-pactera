@@ -18,9 +18,7 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters bridge methods.
- */
+
 final class BridgeFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

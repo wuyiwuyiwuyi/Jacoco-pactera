@@ -21,9 +21,7 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFrame;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * IFrame implementation which creates snapshots from an {@link AnalyzerAdapter}
- */
+
 class FrameSnapshot implements IFrame {
 
 	private static final FrameSnapshot NOP = new FrameSnapshot(null, null);
@@ -36,16 +34,7 @@ class FrameSnapshot implements IFrame {
 		this.stack = stack;
 	}
 
-	/**
-	 * Create a IFrame instance based on the given analyzer.
-	 *
-	 * @param analyzer
-	 *            analyzer instance or <code>null</code>
-	 * @param popCount
-	 *            number of items to remove from the operand stack
-	 * @return IFrame instance. In case the analyzer is <code>null</code> or
-	 *         does not contain stackmap information a "NOP" IFrame is returned.
-	 */
+
 	static IFrame create(final AnalyzerAdapter analyzer, final int popCount) {
 		if (analyzer == null || analyzer.locals == null) {
 			return NOP;
@@ -55,11 +44,7 @@ class FrameSnapshot implements IFrame {
 		return new FrameSnapshot(locals, stack);
 	}
 
-	/**
-	 * Reduce double word types into a single slot as required
-	 * {@link MethodVisitor#visitFrame(int, int, Object[], int, Object[])}
-	 * method.
-	 */
+
 	private static Object[] reduce(final List<Object> source,
 			final int popCount) {
 		final List<Object> copy = new ArrayList<Object>(source);
@@ -73,8 +58,6 @@ class FrameSnapshot implements IFrame {
 		}
 		return copy.toArray();
 	}
-
-	// === IFrame implementation ===
 
 	public void accept(final MethodVisitor mv) {
 		if (locals != null) {

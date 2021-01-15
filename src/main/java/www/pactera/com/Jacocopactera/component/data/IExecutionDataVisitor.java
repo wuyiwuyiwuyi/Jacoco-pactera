@@ -14,19 +14,9 @@ package www.pactera.com.Jacocopactera.component.data;
 
 import www.pactera.com.Jacocopactera.component.data.execution.ExecutionData;
 
-/**
- * Interface for data output of collected execution data. This interface is
- * meant to be implemented by parties that want to retrieve data from the
- * coverage runtime.
- */
+
 public interface IExecutionDataVisitor {
 
-	/**
-	 * Provides execution data for a class.
-	 *
-	 * @param data
-	 *            execution data for a class
-	 */
 	void visitClassExecution(ExecutionData data);
 
 }

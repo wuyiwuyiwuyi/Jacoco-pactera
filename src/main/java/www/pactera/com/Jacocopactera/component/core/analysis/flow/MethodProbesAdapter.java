@@ -24,10 +24,7 @@ import www.pactera.com.Jacocopactera.component.core.analysis.instr.InstrSupport;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Adapter that creates additional visitor events for probes to be inserted into
- * a method.
- */
+
 public final class MethodProbesAdapter extends MethodVisitor {
 
 	private final MethodProbesVisitor probesVisitor;
@@ -38,14 +35,7 @@ public final class MethodProbesAdapter extends MethodVisitor {
 
 	private final Map<Label, Label> tryCatchProbeLabels;
 
-	/**
-	 * Create a new adapter instance.
-	 *
-	 * @param probesVisitor
-	 *            visitor to delegate to
-	 * @param idGenerator
-	 *            generator for unique probe ids
-	 */
+
 	public MethodProbesAdapter(final MethodProbesVisitor probesVisitor,
 			final IProbeIdGenerator idGenerator) {
 		super(InstrSupport.ASM_API_VERSION, probesVisitor);
@@ -54,13 +44,7 @@ public final class MethodProbesAdapter extends MethodVisitor {
 		this.tryCatchProbeLabels = new HashMap<Label, Label>();
 	}
 
-	/**
-	 * If an analyzer is set {@link IFrame} handles are calculated and emitted
-	 * to the probes methods.
-	 *
-	 * @param analyzer
-	 *            optional analyzer to set
-	 */
+
 	public void setAnalyzer(final AnalyzerAdapter analyzer) {
 		this.analyzer = analyzer;
 	}

@@ -14,15 +14,7 @@ package www.pactera.com.Jacocopactera.component.core.analysis.internal;
 
 import org.objectweb.asm.Opcodes;
 
-/**
- * CRC64 checksum calculator based on the polynom specified in ISO 3309. The
- * implementation is based on the following publications:
- *
- * <ul>
- * <li>http://en.wikipedia.org/wiki/Cyclic_redundancy_check</li>
- * <li>http://www.geocities.com/SiliconValley/Pines/8659/crc.htm</li>
- * </ul>
- */
+
 public final class CRC64 {
 
 	private static final long POLY64REV = 0xd800000000000000L;
@@ -44,33 +36,13 @@ public final class CRC64 {
 		}
 	}
 
-	/**
-	 * Updates given checksum by given byte.
-	 *
-	 * @param sum
-	 *            initial checksum value
-	 * @param b
-	 *            byte to update the checksum with
-	 * @return updated checksum value
-	 */
+
 	private static long update(final long sum, final byte b) {
 		final int lookupidx = ((int) sum ^ b) & 0xff;
 		return (sum >>> 8) ^ LOOKUPTABLE[lookupidx];
 	}
 
-	/**
-	 * Updates given checksum by bytes from given array.
-	 *
-	 * @param sum
-	 *            initial checksum value
-	 * @param bytes
-	 *            byte array to update the checksum with
-	 * @param fromIndexInclusive
-	 *            start index in array, inclusive
-	 * @param toIndexExclusive
-	 *            end index in array, exclusive
-	 * @return updated checksum value
-	 */
+
 	private static long update(long sum, final byte[] bytes,
 			final int fromIndexInclusive, final int toIndexExclusive) {
 		for (int i = fromIndexInclusive; i < toIndexExclusive; i++) {
@@ -79,13 +51,7 @@ public final class CRC64 {
 		return sum;
 	}
 
-	/**
-	 * Calculates class identifier for the given class bytes.
-	 *
-	 * @param bytes
-	 *            class bytes
-	 * @return class identifier
-	 */
+
 	public static long classId(final byte[] bytes) {
 		if (bytes.length > 7 && bytes[6] == 0x00 && bytes[7] == Opcodes.V9) {
 			// To support early versions of Java 9 we did a trick - change of

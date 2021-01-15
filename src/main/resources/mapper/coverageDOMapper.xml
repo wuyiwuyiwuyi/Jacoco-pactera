@@ -21,7 +21,7 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="www.pactera.com.Jacocopactera.dao.objectDo.CoverageDO">
-        insert into coverage_result_serial_number (id, serial_id, `server_name`,
+        insert into coverage_result_serial_number(id, serial_id, `server_name`,
         version_number, `status`, phase,handle_user, business_direction,
         coverage_rate, total_Line, report_url,
         generate_time, is_delete)

@@ -30,9 +30,7 @@ import www.pactera.com.Jacocopactera.component.core.analysis.instr.InstrSupport;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Analyzes the structure of a class.
- */
+
 public class ClassAnalyzer extends ClassProbesVisitor
 		implements IFilterContext {
 
@@ -48,16 +46,7 @@ public class ClassAnalyzer extends ClassProbesVisitor
 
 	private final IFilter filter;
 
-	/**
-	 * Creates a new analyzer that builds coverage data for a class.
-	 *
-	 * @param coverage
-	 *            coverage node for the analyzed class data
-	 * @param probes
-	 *            execution data for this class or <code>null</code>
-	 * @param stringPool
-	 *            shared pool to minimize the number of {@link String} instances
-	 */
+
 	public ClassAnalyzer(final ClassCoverageImpl coverage,
                          final boolean[] probes, final StringPool stringPool) {
 		this.coverage = coverage;

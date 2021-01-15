@@ -19,10 +19,7 @@ import org.objectweb.asm.commons.AnalyzerAdapter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IProbeIdGenerator;
 import www.pactera.com.Jacocopactera.component.core.analysis.instr.InstrSupport;
 
-/**
- * A {@link ClassVisitor} that calculates probes for every
- * method.
- */
+
 public class ClassProbesAdapter extends ClassVisitor
 		implements IProbeIdGenerator {
 
@@ -37,14 +34,7 @@ public class ClassProbesAdapter extends ClassVisitor
 
 	private String name;
 
-	/**
-	 * Creates a new adapter that delegates to the given visitor.
-	 *
-	 * @param cv
-	 *            instance to delegate to
-	 * @param trackFrames
-	 *            if <code>true</code> stackmap frames are tracked and provided
-	 */
+
 	public ClassProbesAdapter(final ClassProbesVisitor cv,
                               final boolean trackFrames) {
 		super(InstrSupport.ASM_API_VERSION, cv);

@@ -16,31 +16,14 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Additional data input methods for compact storage of data structures.
- *
- * @see CompactDataOutput
- */
+
 public class CompactDataInput extends DataInputStream {
 
-	/**
-	 * Creates a new {@link CompactDataInput} that uses the specified underlying
-	 * input stream.
-	 *
-	 * @param in
-	 *            underlying input stream
-	 */
 	public CompactDataInput(final InputStream in) {
 		super(in);
 	}
 
-	/**
-	 * Reads a variable length representation of an integer value.
-	 *
-	 * @return read value
-	 * @throws IOException
-	 *             if thrown by the underlying stream
-	 */
+
 	public int readVarInt() throws IOException {
 		final int value = 0xFF & readByte();
 		if ((value & 0x80) == 0) {
@@ -49,13 +32,6 @@ public class CompactDataInput extends DataInputStream {
 		return (value & 0x7F) | (readVarInt() << 7);
 	}
 
-	/**
-	 * Reads a boolean array.
-	 *
-	 * @return boolean array
-	 * @throws IOException
-	 *             if thrown by the underlying stream
-	 */
 	public boolean[] readBooleanArray() throws IOException {
 		final boolean[] value = new boolean[readVarInt()];
 		int buffer = 0;

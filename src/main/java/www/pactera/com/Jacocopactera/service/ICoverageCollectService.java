@@ -3,9 +3,6 @@ package www.pactera.com.Jacocopactera.service;
 import www.pactera.com.Jacocopactera.common.BaseEntity.ResponseData;
 import www.pactera.com.Jacocopactera.common.Dto.*;
 
-import javax.servlet.http.HttpServletResponse;
-
-
 public interface ICoverageCollectService {
 
     ResponseData<CollectCoverageRespDTO> coverageCollect(CollectCoverageReqDTO reqDTO,String token);
@@ -18,6 +15,6 @@ public interface ICoverageCollectService {
 
     ResponseData<SourceCoverageRespDTO> querySourceCoverage(SourceCoverageReqDTO sourceCoverageReqDTO);
 
-    void gainSourceFile(HttpServletResponse response,SourceCoverageReqDTO reqDTO);
+    ResponseData<SourcesGainDTO> gainSourceFile(SourceCoverageReqDTO reqDTO);
 
 }

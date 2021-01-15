@@ -15,13 +15,10 @@ package www.pactera.com.Jacocopactera.component.core.analysis.internal;
 
 import www.pactera.com.Jacocopactera.component.core.analysis.ICounter;
 
-/**
- * {@link ICounter} implementations. Implementing a factory pattern allows to
- * share counter instances.
- */
+
 public abstract class CounterImpl implements ICounter {
 
-	/** Max counter value for which singletons are created */
+
 	private static final int SINGLETON_LIMIT = 30;
 
 	private static final CounterImpl[][] SINGLETONS = new CounterImpl[SINGLETON_LIMIT
@@ -36,18 +33,16 @@ public abstract class CounterImpl implements ICounter {
 		}
 	}
 
-	/** Constant for Counter with 0/0 values. */
+
 	public static final CounterImpl COUNTER_0_0 = SINGLETONS[0][0];
 
-	/** Constant for Counter with 1/0 values. */
+
 	public static final CounterImpl COUNTER_1_0 = SINGLETONS[1][0];
 
-	/** Constant for Counter with 0/1 values. */
+
 	public static final CounterImpl COUNTER_0_1 = SINGLETONS[0][1];
 
-	/**
-	 * Mutable version of the counter.
-	 */
+
 	private static class Var extends CounterImpl {
 		public Var(final int missed, final int covered) {
 			super(missed, covered);
@@ -61,9 +56,7 @@ public abstract class CounterImpl implements ICounter {
 		}
 	}
 
-	/**
-	 * Immutable version of the counter.
-	 */
+
 	private static class Fix extends CounterImpl {
 		public Fix(final int missed, final int covered) {
 			super(missed, covered);
@@ -75,15 +68,6 @@ public abstract class CounterImpl implements ICounter {
 		}
 	}
 
-	/**
-	 * Factory method to retrieve a counter with the given number of items.
-	 *
-	 * @param missed
-	 *            number of missed items
-	 * @param covered
-	 *            number of covered items
-	 * @return counter instance
-	 */
 	public static CounterImpl getInstance(final int missed, final int covered) {
 		if (missed <= SINGLETON_LIMIT && covered <= SINGLETON_LIMIT) {
 			return SINGLETONS[missed][covered];
@@ -92,60 +76,28 @@ public abstract class CounterImpl implements ICounter {
 		}
 	}
 
-	/**
-	 * Factory method to retrieve a clone of the given counter.
-	 *
-	 * @param counter
-	 *            counter to copy
-	 * @return counter instance
-	 */
+
 	public static CounterImpl getInstance(final ICounter counter) {
 		return getInstance(counter.getMissedCount(), counter.getCoveredCount());
 	}
 
-	/** number of missed items */
 	protected int missed;
 
-	/** number of covered items */
+
 	protected int covered;
 
-	/**
-	 * Creates a new instance with the given numbers.
-	 *
-	 * @param missed
-	 *            number of missed items
-	 * @param covered
-	 *            number of covered items
-	 */
+
 	protected CounterImpl(final int missed, final int covered) {
 		this.missed = missed;
 		this.covered = covered;
 	}
 
-	/**
-	 * Returns a counter with values incremented by the numbers of the given
-	 * counter. It is up to the implementation whether this counter instance is
-	 * modified or a new instance is returned.
-	 *
-	 * @param counter
-	 *            number of additional total and covered items
-	 * @return counter instance with incremented values
-	 */
+
 	public CounterImpl increment(final ICounter counter) {
 		return increment(counter.getMissedCount(), counter.getCoveredCount());
 	}
 
-	/**
-	 * Returns a counter with values incremented by the given numbers. It is up
-	 * to the implementation whether this counter instance is modified or a new
-	 * instance is returned.
-	 *
-	 * @param missed
-	 *            number of missed items
-	 * @param covered
-	 *            number of covered items
-	 * @return counter instance with incremented values
-	 */
+
 	public abstract CounterImpl increment(int missed, int covered);
 
 	// === ICounter implementation ===

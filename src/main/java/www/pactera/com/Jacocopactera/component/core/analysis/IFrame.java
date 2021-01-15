@@ -14,17 +14,10 @@ package www.pactera.com.Jacocopactera.component.core.analysis;
 
 import org.objectweb.asm.MethodVisitor;
 
-/**
- * Representation of the current stackmap frame content.
- */
+
 public interface IFrame {
 
-	/**
-	 * Emits a frame event with the current content to the given visitor.
-	 *
-	 * @param mv
-	 *            method visitor to emit frame event to
-	 */
+
 	void accept(MethodVisitor mv);
 
 }

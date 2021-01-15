@@ -20,12 +20,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
 import java.util.List;
 
-/**
- * Filters classes and methods annotated with
- * {@link java.lang.annotation.RetentionPolicy#RUNTIME runtime visible} and
- * {@link java.lang.annotation.RetentionPolicy#CLASS invisible} annotation whose
- * simple name contains <code>Generated</code>.
- */
 public final class AnnotationGeneratedFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

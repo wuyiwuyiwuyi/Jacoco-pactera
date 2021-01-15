@@ -17,23 +17,14 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filter that combines other filters.
- */
+
 public final class Filters implements IFilter {
 
-	/**
-	 * Filter that does nothing.
-	 */
+
 	public static final IFilter NONE = new Filters();
 
 	private final IFilter[] filters;
 
-	/**
-	 * Creates filter that combines all other filters.
-	 *
-	 * @return filter that combines all other filters
-	 */
 	public static IFilter all() {
 		return new Filters(new EnumFilter(), new SyntheticFilter(),
 				new BridgeFilter(), new SynchronizedFilter(),

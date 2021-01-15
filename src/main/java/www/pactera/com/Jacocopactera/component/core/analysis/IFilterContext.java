@@ -19,36 +19,19 @@ import java.util.Set;
  */
 public interface IFilterContext {
 
-	/**
-	 * @return vm name of the enclosing class
-	 */
 	String getClassName();
 
-	/**
-	 * @return vm name of the super class of the enclosing class
-	 */
 	String getSuperClassName();
 
-	/**
-	 * @return vm names of the class annotations of the enclosing class
-	 */
 	Set<String> getClassAnnotations();
 
-	/**
-	 * @return names of the class attributes
-	 */
+
 	Set<String> getClassAttributes();
 
-	/**
-	 * @return file name of the corresponding source file or <code>null</code>
-	 *         if not available
-	 */
+
 	String getSourceFileName();
 
-	/**
-	 * @return value of SourceDebugExtension attribute or <code>null</code> if
-	 *         not available
-	 */
+
 	String getSourceDebugExtension();
 
 }

@@ -21,9 +21,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Filters code that ECJ generates for try-with-resources statement.
- */
 public final class TryWithResourcesEcjFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

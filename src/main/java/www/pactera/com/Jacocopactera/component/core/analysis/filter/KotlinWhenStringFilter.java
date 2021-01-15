@@ -21,10 +21,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Filters bytecode that Kotlin compiler generates for <code>when</code>
- * expressions with a <code>String</code>.
- */
 public final class KotlinWhenStringFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,

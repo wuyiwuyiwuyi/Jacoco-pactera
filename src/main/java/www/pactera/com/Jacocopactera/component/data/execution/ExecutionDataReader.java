@@ -22,12 +22,10 @@ import java.io.InputStream;
 
 import static java.lang.String.format;
 
-/**
- * Deserialization of execution data from binary streams.
- */
+
 public class ExecutionDataReader {
 
-	/** Underlying data input */
+
 	protected final CompactDataInput in;
 
 	private ISessionInfoVisitor sessionInfoVisitor = null;
@@ -36,50 +34,21 @@ public class ExecutionDataReader {
 
 	private boolean firstBlock = true;
 
-	/**
-	 * Creates a new reader based on the given input stream input. Depending on
-	 * the nature of the underlying stream input should be buffered as most data
-	 * is read in single bytes.
-	 *
-	 * @param input
-	 *            input stream to read execution data from
-	 */
+
 	public ExecutionDataReader(final InputStream input) {
 		this.in = new CompactDataInput(input);
 	}
 
-	/**
-	 * Sets an listener for session information.
-	 *
-	 * @param visitor
-	 *            visitor to retrieve session info events
-	 */
+
 	public void setSessionInfoVisitor(final ISessionInfoVisitor visitor) {
 		this.sessionInfoVisitor = visitor;
 	}
 
-	/**
-	 * Sets an listener for execution data.
-	 *
-	 * @param visitor
-	 *            visitor to retrieve execution data events
-	 */
+
 	public void setExecutionDataVisitor(final IExecutionDataVisitor visitor) {
 		this.executionDataVisitor = visitor;
 	}
 
-	/**
-	 * Reads all data and reports it to the corresponding visitors. The stream
-	 * is read until its end or a command confirmation has been sent.
-	 *
-	 * @return <code>true</code> if additional data can be expected after a
-	 *         command has been executed. <code>false</code> if the end of the
-	 *         stream has been reached.
-	 * @throws IOException
-	 *             might be thrown by the underlying input stream
-	 * @throws IncompatibleExecDataVersionException
-	 *             incompatible data version from different JaCoCo release
-	 */
 	public boolean read()
 			throws IOException, IncompatibleExecDataVersionException {
 		byte type;
@@ -97,16 +66,7 @@ public class ExecutionDataReader {
 		return true;
 	}
 
-	/**
-	 * Reads a block of data identified by the given id. Subclasses may
-	 * overwrite this method to support additional block types.
-	 *
-	 * @param blocktype
-	 *            block type
-	 * @return <code>true</code> if there are more blocks to read
-	 * @throws IOException
-	 *             might be thrown by the underlying input stream
-	 */
+
 	protected boolean readBlock(final byte blocktype) throws IOException {
 		switch (blocktype) {
 		case ExecutionDataWriter.BLOCK_HEADER:

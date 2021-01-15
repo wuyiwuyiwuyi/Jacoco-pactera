@@ -12,18 +12,9 @@
  *******************************************************************************/
 package www.pactera.com.Jacocopactera.component.data;
 
-/**
- * Interface for coverage data output as a stream of {@link IClassCoverage}
- * instances.
- */
+
 public interface ICoverageVisitor {
 
-	/**
-	 * For analyzed class coverage data is emitted to this method.
-	 *
-	 * @param coverage
-	 *            coverage data for a class
-	 */
 	void visitCoverage(IClassCoverage coverage);
 
 }

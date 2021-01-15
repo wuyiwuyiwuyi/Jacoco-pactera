@@ -9,7 +9,7 @@
     </resultMap>
 
     <insert id="insert" parameterType="www.pactera.com.Jacocopactera.dao.objectDo.LoginDO">
-        insert into user_login (id, username, `password`,create_time)
+        insert into user_login(id, username, `password`,create_time)
         values (#{LoginDO.id,jdbcType=INTEGER}, #{LoginDO.username,jdbcType=VARCHAR}, #{LoginDO.password,jdbcType=VARCHAR},
         #{LoginDO.createTime,jdbcType=TIMESTAMP})
     </insert>

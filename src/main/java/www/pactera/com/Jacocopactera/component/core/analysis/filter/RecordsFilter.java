@@ -20,10 +20,6 @@ import www.pactera.com.Jacocopactera.component.core.analysis.IFilter;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterContext;
 import www.pactera.com.Jacocopactera.component.core.analysis.IFilterOutput;
 
-/**
- * Filters methods <code>toString</code>, <code>hashCode</code> and
- * <code>equals</code> that compiler generates for records.
- */
 public final class RecordsFilter implements IFilter {
 
 	public void filter(final MethodNode methodNode,
